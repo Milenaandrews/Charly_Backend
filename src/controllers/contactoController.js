@@ -22,6 +22,11 @@ const guardarContacto = async (req, res) => {
 
     } catch (error) {
         console.log(error)
+        if (error.name === 'ValidationError') {
+            //! Error de validación de Mongoose
+            const messages = Object.values(error.errors).map(val => val.message);
+            return res.status(400).json({ success: false, msg: messages });
+        }
         res.status(500).json({ success: false, msg: error.message })
     }
 }
