@@ -5,7 +5,7 @@ const contactoSchema = new mongoose.Schema(
         nombre: {
             type: String,
             required: true,
-            lowercase: true,
+            lowercase: false,
             minLength: 3,
             maxLength: 100,
             trim: true
